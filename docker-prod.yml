@@ -18,8 +18,7 @@ services:
       - static-files:/code/static-files
       - site-media:/code/site-media
     depends_on:
-      db:
-        condition: service_healthy
+      - db
     env_file:
       - .env.docker.production.api
   web:

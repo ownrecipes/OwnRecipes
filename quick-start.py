@@ -16,7 +16,7 @@ def update_image_tags(version=None):
              With the version of each image to pull.
     """
     version = version if version is not None else 'latest'
-    version = '''version: '2.3'
+    version = '''version: '3.1'
 services:
   api:
     image: ownrecipes/ownrecipes-api:%s
