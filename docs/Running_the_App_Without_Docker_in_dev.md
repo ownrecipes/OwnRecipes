@@ -15,7 +15,7 @@ Following this guide, you will set up the database MariaDB, the ownrecipes-api a
 
 ## Install Prerequisites
 
-`sudo apt install git build-essential`
+`sudo apt install git build-essential libjpeg-dev zlib1g-dev`
 
 ## Create Base Directory
 
@@ -72,7 +72,7 @@ Exit From MySQL:
 
 ### Install dependencies
 
-`sudo apt-get install python3 python3-pip git build-essential`
+`sudo apt-get install python3 python3-pip python-venv git build-essential`
 
 ### Setup the files
 
@@ -114,6 +114,12 @@ Then, open the file `/opt/ownrecipes/ownrecipes-api/.env.service.local` and chan
 
 `cp /opt/ownrecipes/ownrecipes-api/docs/samples/no_docker/gunicorn_start.sh /opt/ownrecipes/ownrecipes-api/base/`
 
+**Copy the /opt/ownrecipes/ownrecipes-api/base/gc.sh file:**
+
+*If you are using a different directory than "/opt/ownrecipes", then you have to adjust the file to your needs.*
+
+`cp /opt/ownrecipes/ownrecipes-api/docs/samples/no_docker/gc.sh /opt/ownrecipes/ownrecipes-api/base/`
+
 **Create systemd service to run the api:**
 
 *If you are using a different directory than "/opt/ownrecipes", or can't use the os user "ownrecipes", then you have to adjust the file to your needs.*
@@ -140,14 +146,23 @@ Tip: Change default shell to bash for more convenient terminal usage:
 
 ### Install the Python Requirements
 
-First, change user to the OS user for ownrecipes
+First, change user to the OS user for ownrecipes:
 
 ```bash
 sudo su ownrecipes
+cd /opt/ownrecipes/ownrecipes-api
+```
+
+Then, create the python virtual environment:
+
+```bash
+python3 -m venv /opt/ownrecipes/ownrecipes-api
+. bin/activate
+python3 -m pip install wheel
 ```
 
 ```bash
-pip3 install -U -r /opt/ownrecipes/ownrecipes-api/base/requirements.txt
+pip3 install -U -r base/requirements.txt
 ```
 
 On some systems, it may be neccessary to add the newly installed tools to the PATH.
@@ -206,6 +221,20 @@ If all is running correctly, you should see the line
 ```
 
 ... and probably as last lines `[INFO] Booting worker with pid: ...`.
+
+### Optional: Cron job for householding
+
+*Note: Linux only.*
+
+Add a cron job to run garbage collection daily.
+
+```bash
+sudo crontab -e
+
+0 6 * * * su ownrecipes -c "/opt/ownrecipes/ownrecipes-api/base/gc.sh"
+
+sudo service cron restart
+```
 
 ### Troubleshooting
 
