@@ -1,6 +1,27 @@
+<a name="readme-top"></a>
+
 # Running the App: Tricks
 
 Below some tips and tricks for running the app for some edge-cases.
+
+<details>
+  <summary>Table of Contents</summary>
+  <ol>
+    <li><a href="#host-api-and-web-on-different-devices">Host api and web on different devices</a></li>
+    <li><a href="#web-developer-run-the-api-via-docker-and-the-web-via-npm">Web-Developer? Run the api via docker, and the web via npm</a></li>
+    <li><a href="#single-board-computer">Single-board computer</a></li>
+  </ol>
+</details>
+
+## Host api and web on different devices
+
+You can split the app up on different devices, or even [connect to a remote DB](Running_the_App.md#connecting-to-a-remote-db).
+You will have to make some changes to the used env files (based on your set up),
+and be careful about CORS errors and such.
+
+Usually, this isn't necessary and the preferred way is to host everything on one server/device.
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## Web-Developer? Run the api via docker, and the web via npm
 
@@ -26,11 +47,13 @@ cd ownrecipes-web
 npm start
 ```
 
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
 ## Single-board computer
 
 I am running OwnRecipes on my Raspberry Pi 3, and it is performing quite well.
 
-Key is to [run it without docker](Running_the_App_Without_Docker).
+Key is to [run it without docker](Running_the_App_Without_Docker), as docker is too resource-hungry for my Raspberry Pi 3.
 
 You can even host OwnRecipes under a sub-path, like https://my-raspberry-pi.com/ownrecipes.
 First, make sure that your [web-server](Running_the_App_Without_Docker/#web-server-nginx-option-2) is really listening for / serving the right sub-path accordingly. I use nginx over apache, as I found it to perform better.
@@ -55,3 +78,5 @@ And copy the result to the directory that your web-server is serving.
 
 **Tip:** As building the web takes pretty long on my Raspberry Pi, I rather do that on my desktop computer, and copy the result via scp to my Raspberry Pi. You don't need NodeJS on your Raspberry Pi to run the web,
 as the app is compiled to a static website. Make sure that the `.env.production.local` is fed with correct values, or create a separate file `.env.raspi`. Build the app with `REACT_APP_ENV=raspi npm run build:prod`.
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
