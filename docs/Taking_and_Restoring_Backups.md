@@ -1,4 +1,14 @@
+<a name="readme-top"></a>
+
 # Backing up Your Data
+
+<details open>
+  <summary>Table of Contents</summary>
+  <ol>
+    <li><a href="#docker">Docker</a></li>
+    <li><a href="#without-docker">Without docker</a></li>
+  </ol>
+</details>
 
 ## Docker
 

@@ -2,7 +2,7 @@
 
 # Troubleshooting
 
-<details>
+<details open>
   <summary>Table of Contents</summary>
   <ol>
     <li><a href="#docker-compose-throws-an-error">docker-compose throws an error</a></li>

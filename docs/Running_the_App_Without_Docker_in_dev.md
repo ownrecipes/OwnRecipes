@@ -27,7 +27,7 @@ mkdir /opt/ownrecipes/
 
 ## Database
 
-We will use MariaDB.
+We will use MariaDB. The minimum required version is 10.4, and the recommended and tested version is 10.11 LTS.
 
 ### Install
 
@@ -191,7 +191,6 @@ sudo su ownrecipes
 
 ```bash
 cd /opt/ownrecipes/ownrecipes-api
-/bin/bash -ac '. .env.service.local; exec python3 manage.py makemigrations'
 /bin/bash -ac '. .env.service.local; exec python3 manage.py migrate'
 /bin/bash -ac '. .env.service.local; exec python3 manage.py createsuperuser'
 ```
@@ -211,7 +210,7 @@ Open a new terminal.
 
 `sudo service ownrecipes start`
 
-**Check if the api running correctly:**
+**Check if the api is running correctly:**
 
 `sudo service ownrecipes status`
 

@@ -40,12 +40,8 @@ All container, db, api and web, should start successfully. Check the terminal ou
 
 ## First Time Setup
 
-Seed the database.
-
 To create a super user:
-``` bash
-sudo docker compose run --rm --entrypoint 'python manage.py makemigrations' api
-sudo docker compose run --rm --entrypoint 'python manage.py migrate' api
+```bash
 sudo docker compose run --rm --entrypoint 'python manage.py createsuperuser' api
 ```
 Follow the prompts given to create your user. You can do this as many times as you like.
@@ -76,32 +72,6 @@ sudo docker compose --profile all up
 
 If you encounter any issue, please read the [Troubleshooting guide](Troubleshooting.md).
 
-## Updating to a new (develop) version
+## Updating/Upgrading
 
-When updating your local version that is deployed via docker,
-you have to keep in mind that the installed dependencies
-are being cached to reduce startup times.
-
-Thus, when you update your local version and the new version
-requires new dependencies (or new package versions), you will
-have to clean up the related local docker stuff.
-
-First, clean up everything:
-```bash
-cd OwnRecipes
-sudo docker compose --profile all down
-```
-
-Then, update your local repositories:
-```bash
-cd ownrecipes-api
-git checkout development
-git pull
-
-cd ../
-cd ownrecipes-web
-git checkout development
-git pull
-```
-
-Finally, [build and run OwnRecipes](#setup-ownrecipes), as you usually would.
+See [Updating the App](Updating_the_App.md#running-the-app-with-docker-development)
