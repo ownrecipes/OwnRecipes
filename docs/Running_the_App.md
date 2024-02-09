@@ -115,8 +115,8 @@ If you encounter any issue, please read the [Troubleshooting guide](Troubleshoot
 ## First Time Setup
 
 To create a super user:
-``` bash
-sudo docker compose -f docker-prod.yml run --rm --entrypoint 'python manage.py createsuperuser' api
+```bash
+sudo docker compose -f docker-prod.yml -f docker-prod.override.yml -f docker-prod.version.yml run --rm --entrypoint 'python manage.py createsuperuser' api
 ```
 Follow the prompts given to create your user. You can do this as many times as you like.
 
@@ -124,7 +124,7 @@ _[Click here if docker-compose throws an error](Troubleshooting.md#docker-compos
 
 If you want to add some test data you can load a few recipes and some news data. This data isn't really needed unless you just wanna see how the app looks and if its working.
 ```bash
-sudo docker compose -f docker-prod.yml run --rm --entrypoint 'sh' api
+sudo docker compose -f docker-prod.yml -f docker-prod.override.yml -f docker-prod.version.yml run --rm --entrypoint 'sh' api
 ./manage.py loaddata course_data.json
 ./manage.py loaddata cuisine_data.json
 ./manage.py loaddata news_data.json
@@ -162,3 +162,7 @@ If you are connecting the API to a remote DB (any non-dockerized DB) you need to
 - [MYSQL_PORT](Setting_up_env_file.md#MYSQL_PORT)
 
 You will also need to edit your `docker-prod.yml` file to remove the database from the setup process. See [this docker yml](samples/sample_docker_prod_remote_db.yml) for an example.
+
+## Updating/Upgrading
+
+See [Updating the App](Updating_the_App.md#updating-the-app-with-docker-production)

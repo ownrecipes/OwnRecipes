@@ -129,14 +129,14 @@ def start_containers():
         '-f', 'docker-prod.yml',
         '-f', 'docker-prod.version.yml',
         '-f', 'docker-prod.override.yml',
-        'stop', 'api'
+        'stop', 'web'
     ])
     call([
         *dockerComposeArr,
         '-f', 'docker-prod.yml',
         '-f', 'docker-prod.version.yml',
         '-f', 'docker-prod.override.yml',
-        'stop', 'web'
+        'stop', 'api'
     ])
 
     # Start all the containers
@@ -149,6 +149,50 @@ def start_containers():
     ])
 
     print("App started. Please wait ~30 seconds for the containers to come online.")
+
+
+def stop_containers():
+    print("==================")
+    print("Stopping OwnRecipes")
+    print("==================")
+
+    dockerCompose = getDockerCompose()
+    if dockerCompose is None:
+        raise RuntimeError("docker-compose not found. Please install the requirements and try again.")
+    dockerComposeArr = dockerCompose.split(' ')
+
+    # Stop each container.
+    call([
+        *dockerComposeArr,
+        '-f', 'docker-prod.yml',
+        '-f', 'docker-prod.version.yml',
+        '-f', 'docker-prod.override.yml',
+        'stop', 'nginx'
+    ])
+    call([
+        *dockerComposeArr,
+        '-f', 'docker-prod.yml',
+        '-f', 'docker-prod.version.yml',
+        '-f', 'docker-prod.override.yml',
+        'stop', 'web'
+    ])
+    call([
+        *dockerComposeArr,
+        '-f', 'docker-prod.yml',
+        '-f', 'docker-prod.version.yml',
+        '-f', 'docker-prod.override.yml',
+        'stop', 'api'
+    ])
+    call([
+        *dockerComposeArr,
+        '-f', 'docker-prod.yml',
+        '-f', 'docker-prod.version.yml',
+        '-f', 'docker-prod.override.yml',
+        'stop', 'db'
+    ])
+
+
+    print("App stopped.")
 
 
 if __name__ == '__main__':
@@ -165,8 +209,16 @@ if __name__ == '__main__':
         help='The git tag of OwnRecipes you want to run. '
              'If not included, then the master branch will be used.'
     )
+    parser.add_argument(
+        'stop',
+        nargs='?',
+        help='Stops all OwnRecipes containers for the specified tag (or master).'
+    )
     args = parser.parse_args()
 
     update_image_tags(args.tag)
-    download_images(args.tag)
-    start_containers()
+    if args.stop:
+        stop_containers()
+    else:
+        download_images(args.tag)
+        start_containers()

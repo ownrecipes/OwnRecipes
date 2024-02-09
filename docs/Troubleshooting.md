@@ -2,7 +2,7 @@
 
 # Troubleshooting
 
-<details>
+<details open>
   <summary>Table of Contents</summary>
   <ol>
     <li><a href="#docker-compose-throws-an-error">docker-compose throws an error</a></li>
@@ -74,7 +74,7 @@ This means that you certainly reach the web-app, and (if running in production) 
 
 First, check that your api is running, for instance that the docker container is up (run `docker ps` in a terminal). If it is, try to reach the [admin site](Admin_site.md). The admin site is powered by the api (Django) and is unrelated to the web-app. If you can not reach the admin site, than either your urls are wrong, or your nginx is not functional, or perhaps there is some firewall interfering.
 
-If you can reach the admin site, then your api and db are up and running, and appearently also your nginx and web-app. This is good news! Now, check why the web-app can not reach the api. Reduce the technical complexity, for instance temporarily [disable ssl](Setting_up_https.md). Also double check that the env-file for the web-app (`.env.docker.production.web` when running with docker in production mode) is correct. The var `REACT_APP_API_URL` is used to send the requests to the api.
+If you can reach the admin site, then your api and db are up and running, and appearently also your nginx and web-app. This is good news! Now, check why the web-app can not reach the api. First, check that the env-file for the web-app (`.env.docker.production.web` when running with docker in production mode) is correct. The var [`REACT_APP_API_URL`](Setting_up_env_file.md#react_app_api_url) is used to send the requests to the api. Make sure it is correct, and includes the protocol (http, https), host and port. Second, perhaps also reduce the technical complexity, for instance temporarily [disable ssl](Setting_up_https.md).
 
 You can also open the browser developer tools (probably by pressing `[F12]`) and switch to the Network tab. (I recommend Firefox for this, as I find Chrome's Network tab confusing.) There you can gather more information about future requests made to the api (-> open the developer tools, Network tab first, then reload your web-app). You should see some requests handled by nginx directly (like css and js files), that are probably succeeding. And you should see the failing request(s) to the api (probably `/ownrecipes-api/api/v1/news/entry/` and `/ownrecipes-api/api/v1/recipe/mini-browse/` when visiting the home page).
 
