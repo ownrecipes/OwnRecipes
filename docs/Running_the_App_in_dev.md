@@ -74,4 +74,4 @@ If you encounter any issue, please read the [Troubleshooting guide](Troubleshoot
 
 ## Updating/Upgrading
 
-See [Updating the App](Updating_the_App.md#running-the-app-with-docker-development)
+See [Updating the App](Updating_the_App.md#updating-the-app-with-docker-development)

@@ -157,7 +157,7 @@ There should only be breaking changes to these files in major releases (IE. 2.0.
 
 Then, [install the python requirements for ownrecipes-api](Running_the_App_Without_Docker_in_dev/#install-the-python-requirements) and [update all the dependencies for ownrecipes-web](Running_the_App_Without_Docker_in_dev/#install-the-dependencies).
 
-Finally, run the app as usual.
+Finally, [rebuild ownrecipes-web](#create-production-build-of-ownrecipes-web), deploy and run the app/service as usual.
 
 Enjoy!
 

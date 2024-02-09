@@ -310,3 +310,7 @@ npm start
 ```
 
 If you encounter any issue, please read the [Troubleshooting guide](Troubleshooting.md).
+
+## Updating/Upgrading
+
+See [Updating the App](Updating_the_App.md#updating-the-app-without-docker)

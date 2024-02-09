@@ -222,24 +222,6 @@ Or you can straight away log in to the OwnRecipes web app. By default, the url w
 
 If you encounter any issue, please read the [Troubleshooting guide](Troubleshooting.md).
 
-## Updating OwnRecipes
+## Updating/Upgrading
 
-`cd /opt/ownrecipes/`
-
-**Get the update from git sources:**
-
-```bash
-git clone https://github.com/ownrecipes/ownrecipes-api.git
-git clone https://github.com/ownrecipes/ownrecipes-web.git
-```
-
-**Rebuild ownrecipes-web:**
-
-[Rebuild ownrecipes-web with npm](#create-production-build-of-ownrecipes-web)
-
-**Restart services:**
-
-```bash
-sudo service ownrecipes restart
-sudo service apache2 reload
-```
+See [Updating the App](Updating_the_App.md#updating-the-app-without-docker)

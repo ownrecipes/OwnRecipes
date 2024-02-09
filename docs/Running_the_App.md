@@ -165,4 +165,4 @@ You will also need to edit your `docker-prod.yml` file to remove the database fr
 
 ## Updating/Upgrading
 
-See [Updating the App](Updating_the_App.md#running-the-app-with-docker-production)
+See [Updating the App](Updating_the_App.md#updating-the-app-with-docker-production)
