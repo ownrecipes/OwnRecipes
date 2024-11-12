@@ -141,6 +141,22 @@ Default: `admin`.
 
 EX: `ADMIN_URL=ownrecipes-admin`
 
+#### DELETE_ORPHAN_FILES
+
+Automatically deletes unused photos and thumbnails. Set to `False` if you want to keep
+unused photos, or if you encounter any errors with deletion.
+Default: `True`
+
+EX: `DELETE_ORPHAN_FILES=False`
+
+#### MENU_PLAN_GLOBAL
+
+If all instance users share the same menu plan. Useful if the instance is running privately for a family.
+Set to `True` if you want all users to view and edit each others menu.
+Default: `False`
+
+EX: `MENU_PLAN_GLOBAL=True`
+
 #### SITE_MEDIA_URL
 The url the media filse should be served from.
 Default: `site-media`.
@@ -169,14 +185,6 @@ Automatically reduces the size and quality of large images to save disk storage 
 | LOW    | 350 kB               | 1024px x 768px        | 90       |
 
 EX: `RECIPE_IMAGE_QUALITY=OFF`
-
-#### DELETE_ORPHAN_FILES
-
-Automatically deletes unused photos and thumbnails. Set to `False` if you want to keep
-unused photos, or if you encounter any errors with deletion.
-Default: `True`
-
-EX: `DELETE_ORPHAN_FILES=False`
 
 ## Web config
 
