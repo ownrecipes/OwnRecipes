@@ -51,6 +51,8 @@ If you want to add some test data you can load a few recipes and some news data.
 sudo docker compose run --rm --entrypoint 'sh' api
 ./manage.py loaddata course_data.json
 ./manage.py loaddata cuisine_data.json
+./manage.py loaddata season_data.json
+./manage.py loaddata tag_data.json
 ./manage.py loaddata news_data.json
 ./manage.py loaddata recipe_data.json
 ./manage.py loaddata ing_data.json

@@ -75,7 +75,7 @@ The content has to exactly match the placeholder, nothing more or less, in order
 
 ## Manage recipe groups
 
-OwnRecipes supports recipe groups, namely `Courses`, `Cuisines` and `Tags`. When creating or editing recipes, those lists will be extended by new items.
+OwnRecipes supports recipe groups, namely `Courses`, `Cuisines`, `Seasons` and `Tags`. When creating or editing recipes, those lists will be extended by new items.
 
 You can manage those lists via the the Admin Site. It can prove useful to add some pre-defined items, that are suggested when using the recipe form.
 Or perhaps you want to remove or rename some existing items.
