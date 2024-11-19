@@ -19,15 +19,9 @@ If anything goes wrong, make sure you got the backup!
 For this, simply (re-)start the app, e. g. by re-running the `quick-start.py`.
 This will create the database backup. Copy it to a safe location, where it won't be overriden.
 
-Now pull the latest from the repos:
+Now pull the latest from the repo:
 ```bash
 cd OwnRecipes
-git pull
-
-cd ownrecipes-api
-git pull
-
-cd ../ownrecipes-web
 git pull
 ```
 

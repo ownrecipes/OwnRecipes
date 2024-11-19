@@ -34,11 +34,12 @@ Then, copy the needed environment files:
 cp docs/samples/sample_docker_prod_override.yml docker-prod.override.yml
 ```
 
-### Note on docker-prod.override.yml
-
+<details>
+  <summary>Note on docker-prod.override.yml</summary>
 The `docker-prod.override.yml` specifies the port that OwnRecipes is served from as well as any additional configuration that overrides the defaults.
 It also allows the containers to reboot themselves when your machine restarts or if the containers fail. You can change this to `never` if you want to manually control when the containers start and stop.
 By default the nginx docker container will serve as a reverse proxy for the other services, and serve its content on port 8000 on the host machine (forwarded from port 80 on the container).
+</details>
 
 ### Configure the environment file
 
@@ -78,18 +79,10 @@ E.g. Given that the IP address for the OwnRecipes server is `192.168.0.12` and p
 
 ## Start docker containers
 
-Once the files have been created run the command below and replace the version with version of OwnRecipes you want to run. You can also leave this blank (this will pull the latest code)
+Once the files have been created, run the command below to run OwnRecipes with the current version.
 
 ```bash
-sudo ./quick-start.py -t 1.0.3
-```
-OR
-```bash
 sudo ./quick-start.py
-```
-OR
-```bash
-sudo ./quick-start.py --help
 ```
 
 <details>
@@ -100,6 +93,17 @@ sudo ./quick-start.py --help
     <li>Takes a backup of the database and your images.</li>
     <li>Restarts the OwnRecipes containers.</li>
   </ol>
+
+You can also specify a different version to run, though you will have to make sure that the configuration files are compatible.
+```bash
+sudo ./quick-start.py -t 1.0.3
+```
+
+Use the following command for further help:
+```bash
+sudo ./quick-start.py --help
+```
+
 </details>
 
 After completing the startup, you should see the following line in your terminal:

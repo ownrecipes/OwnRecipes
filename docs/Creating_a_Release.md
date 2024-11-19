@@ -2,6 +2,8 @@
 
 ## Preparation
 
+### Make sure everything is finished
+
 1. Update the locales for ownrecipes-web. You might need a release-branch to do so.
     ```bash
     cd OwnRecipes/ownrecipes-web
@@ -13,6 +15,118 @@
     cp ownrecipes-web/.env.production .env.docker.production.web
     cp ownrecipes-api/docs/samples/docker/.env.production .env.docker.production.api
     ```
+
+### Start releases
+
+<details>
+  <summary>Web</summary>
+
+```bash
+cd ownrecipes-web
+git checkout -b release/<version>
+
+>> manual step: update package.json version && package-lock.json version
+
+git add .
+git commit -m "Release <version>"
+
+git push -u origin release/<version>
+
+>> manual step: merge via GitHub
+
+git checkout master
+git pull
+
+git checkout development
+git merge --no-ff master
+
+>> manual step: bump package.json version && package-lock.json version
+
+git add .
+git commit -m "Prepare next version"
+
+git push
+```
+
+</details>
+<details>
+  <summary>Demo</summary>
+
+```bash
+>> manual step: get release commit-id of ownrecipes-web
+
+git checkout gh-pages-deploy
+git rebase commit-id
+npm install
+npm run deploy
+git push --force
+```
+
+</details>
+<details>
+  <summary>Demo</summary>
+
+```bash
+git checkout development
+git pull
+
+git checkout -b release/<version>
+
+>> manual step: update base/urls.py version
+
+git add .
+git commit -m "Release <version>"
+
+git push -u origin release/<version>
+
+>> manual step: merge via GitHub
+
+git checkout master
+git pull
+
+git checkout development
+git merge --no-ff master
+
+git push
+```
+
+</details>
+<details>
+  <summary>Nginx</summary>
+
+```bash
+Nothing to do.
+```
+
+</details>
+<details>
+  <summary>OwnRecipes</summary>
+
+```bash
+git checkout -b release/<version>
+
+>> manual step: Copy README.MD to docs/index.md, fixup links to docs
+
+>> manual step: update quick-start.py, variable app_version
+
+>> manual step: create releases/<version>.json
+
+git add .
+git commit -m "Release <version>"
+git push -u origin release/<version>
+
+>> manual step: merge via GitHub
+
+git checkout master
+git pull
+
+git checkout development
+git merge --no-ff master
+
+git push
+```
+
+</details>
 
 ## GitHub
 
