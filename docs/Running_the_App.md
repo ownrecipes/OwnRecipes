@@ -148,6 +148,10 @@ Or you can straight away log in to the OwnRecipes web app. By default, the url w
 
 If you encounter any issue, please read the [Troubleshooting guide](Troubleshooting.md).
 
+## Updating/Upgrading
+
+See [Updating the App](Updating_the_App.md#updating-the-app-with-docker-production)
+
 ## Advanced setups
 
 ### Setup HTTPS
@@ -159,6 +163,7 @@ It is highly recommended that you serve your content over https. See [Setting up
 See [Creating a proxy server for docker](Creating_a_proxy_server_for_docker.md) for more information on how to configure a custom nginx server to serve OwnRecipes.
 
 ### Connecting to a remote DB
+
 If you are connecting the API to a remote DB (any non-dockerized DB) you need to setup the following configs to your env file.
 
 - [MYSQL_DATABASE](Setting_up_env_file.md#MYSQL_DATABASE)
@@ -167,8 +172,6 @@ If you are connecting the API to a remote DB (any non-dockerized DB) you need to
 - [MYSQL_HOST](Setting_up_env_file.md#MYSQL_HOST)
 - [MYSQL_PORT](Setting_up_env_file.md#MYSQL_PORT)
 
+Note: The env-variables are also [generalized](Setting_up_env_file.md#generalized-database-variables).
+
 You will also need to edit your `docker-prod.yml` file to remove the database from the setup process. See [this docker yml](samples/sample_docker_prod_remote_db.yml) for an example.
-
-## Updating/Upgrading
-
-See [Updating the App](Updating_the_App.md#updating-the-app-with-docker-production)

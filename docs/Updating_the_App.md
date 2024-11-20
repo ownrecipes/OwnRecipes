@@ -149,7 +149,7 @@ Then check the release notes about any changes to the following files:
 
 There should only be breaking changes to these files in major releases (IE. 2.0.0, 3.0.0).
 
-Then, [install the python requirements for ownrecipes-api](Running_the_App_Without_Docker_in_dev/#install-the-python-requirements) and [update all the dependencies for ownrecipes-web](Running_the_App_Without_Docker_in_dev/#install-the-dependencies).
+Then, [install the python requirements for ownrecipes-api](Running_the_App_Without_Docker_in_dev.md#install-the-python-requirements) and [update all the dependencies for ownrecipes-web](Running_the_App_Without_Docker_in_dev.md#install-the-dependencies).
 
 Finally, [rebuild ownrecipes-web](#create-production-build-of-ownrecipes-web), deploy and run the app/service as usual.
 

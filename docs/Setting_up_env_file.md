@@ -1,7 +1,15 @@
-## Configuing your Environment
+## Configuring your Environment
 
 This file will provide some context on the env settings.
 
+<details open>
+  <summary>Table of Contents</summary>
+  <ol>
+    <li><a href="#database-config">Database config</a></li>
+    <li><a href="#api--django-config">API / Django config</a></li>
+    <li><a href="#web-config">Web config</a></li>
+  </ol>
+</details>
 
 ## Database config
 
@@ -50,6 +58,89 @@ Only required if running the database via docker.
 
 EX: `MYSQL_ROOT_PASSWORD=db-trustNo1`
 
+### Generalized database variables
+⚠ WARNING: Switching to a different DB engine is not supported! ⚠
+
+You can use generalized variable names to utilize a different DB engine.
+Do not use them if you are using the official docker builds.
+
+<details>
+  <summary>Generalized database variables</summary>
+
+#### DATABASE_ENGINE
+The django database engine package name.
+
+EX: `DATABASE_ENGINE=django.db.backends.mysql`
+
+#### DATABASE_HOST
+The address or hostname of the DB.
+
+EX: `DATABASE_HOST=my.db.com`
+
+#### DATABASE_PORT
+The port the database is exposed on.
+
+EX: `DATABASE_PORT=3306`
+
+#### DATABASE_NAME
+The database name.
+
+EX: `DATABASE_NAME=ownrecipes`
+
+#### DATABASE_USER
+The user for the database.
+
+EX: `DATABASE_USER=ownrecipes`
+
+#### DATABASE_PASSWORD
+The password for the user given above.
+
+EX: `DATABASE_PASSWORD=root`
+
+</details>
+
+### PostgreSQL
+⚠ WARNING: The PostgreSQL DB engine is not supported! ⚠
+
+You can either use the [generalized database variables](#generalized-database-variables), or even use specialized ones.
+The specialized ones will also work with docker.
+
+<details>
+  <summary>PostgreSQL database variables</summary>
+
+#### DATABASE_ENGINE
+The django database engine package name.
+
+EX: `DATABASE_ENGINE=django.db.backends.postgresql`
+
+#### POSTGRES_HOST
+The address or hostname of the DB.
+
+EX: `POSTGRES_HOST=my.db.com`
+
+#### POSTGRES_PORT
+The port the database is exposed on.
+
+EX: `POSTGRES_PORT=5432`
+
+#### POSTGRES_DB
+The database name.
+
+EX: `POSTGRES_DB=ownrecipes`
+
+#### POSTGRES_USER
+The user for the database.
+
+EX: `POSTGRES_USER=ownrecipes`
+
+#### POSTGRES_PASSWORD
+The password for the user given above.
+
+EX: `POSTGRES_PASSWORD=root`
+
+</details>
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## API / Django config
 
@@ -196,12 +287,12 @@ If unset, the UI will call the API from the same hostname/port. If you are not u
 
 EX: `REACT_APP_API_URL=http://localhost:5210`, `REACT_APP_API_URL=https://api.example.com`
 
-### REACT_APP_ADMIN_URL
+#### REACT_APP_ADMIN_URL
 If you have set up a different url for the DJANGO admin page, then you will have to set this variable accordingly.
 
 EX: `REACT_APP_ADMIN_URL=http://localhost:5210/some-admin-path`, `REACT_APP_ADMIN=https://admin.api.example.com`
 
-### REACT_APP_REQUIRE_LOGIN
+#### REACT_APP_REQUIRE_LOGIN
 If you are storing recipes that would otherwise cause Copyright infringement, or you generally don't want strangers to view your recipes, then you can make OwnRecipes require a login to use any content. If set to `true`, users that are not logged in will be redirected to the login page.
 
 EX: `REACT_APP_REQUIRE_LOGIN=true`
@@ -231,3 +322,5 @@ EX: `https://my-ownrecipes-instance.com/privacy
 
 #### REACT_APP_DEMO
 If set to 'true', then the app will run in demo mode.
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>

@@ -58,6 +58,8 @@ cat ownrecipes.sql | docker exec -i ownrecipes_db_1 /usr/bin/mysql -u root -p"$M
 - [DB backups/restores](https://stackoverflow.com/questions/22907231/copying-files-from-host-to-docker-container)
 
 
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
 ## Without docker
 
 ### Recipes Images
@@ -99,3 +101,5 @@ cd /opt/ownrecipes/ownrecipes-api
 . ./.env
 sudo mysql ownrecipes -u $MYSQL_USER -p"$MYSQL_PASSWORD" < /path/to/your/ownrecipes.sql
 ```
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>

@@ -11,6 +11,7 @@ Below some tips and tricks for running the app for some edge-cases.
     <li><a href="#web-developer-run-the-api-via-docker-and-the-web-via-npm">Web-Developer? Run the api via docker, and the web via npm</a></li>
     <li><a href="#single-board-computer">Single-board computer</a></li>
     <li><a href="#just-build-the-web-via-docker">Just build the web via docker</a></li>
+    <li><a href="#switching-to-a-different-db-engine">Switching to a different DB engine (NOT SUPPORTED)</a></li>
   </ol>
 </details>
 
@@ -54,10 +55,10 @@ npm start
 
 I am running OwnRecipes on my Raspberry Pi 3, and it is performing quite well.
 
-Key is to [run it without docker](Running_the_App_Without_Docker), as docker is too resource-hungry for my Raspberry Pi 3.
+Key is to [run it without docker](Running_the_App_Without_Docker.md), as docker is too resource-hungry for my Raspberry Pi 3.
 
 You can even host OwnRecipes under a sub-path, like https://my-raspberry-pi.com/ownrecipes.
-First, make sure that your [web-server](Running_the_App_Without_Docker/#web-server-nginx-option-2) is really listening for / serving the right sub-path accordingly. I use nginx over apache, as I found it to perform better.
+First, make sure that your [web-server](Running_the_App_Without_Docker.md/#web-server-nginx-option-2) is really listening for / serving the right sub-path accordingly. I use nginx over apache, as I found it to perform better.
 
 Then, change the file `ownrecipes-web/package.json`,
 that the config `homepage` is pointing to your domain and sub-path, for example:
@@ -95,3 +96,13 @@ sudo ./docs/scripts/docker_build.sh
 Note that the result will be the build as tar-archive.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+## Switching to a different DB engine
+
+⚠ WARNING: Switching to a different DB engine is not supported! ⚠
+
+By default the DB engine MariaDB is being used. When [running the api without docker](Running_the_App_Without_Docker.md), the DB engine can be replaced. The required steps include:
+
+* Edit `<ownrecipes-api\>/base/requirements.txt`: Substitute the mysqlclient-package, e. g. by `psycopg2` to utilize PostgreSQL.
+* Edit the [env-file](Setting_up_env_file.md#generalized-database-variables): Include `DATABASE_ENGINE`. Replace the MYSQL-variables with either the [PostgreSQL variables](Setting_up_env_file.md#postgresql) or the [generalized variables](Setting_up_env_file.md#generalized-database-variables).
+* If running with docker, then you will need to build or use the api locally, and edit the `docker-prod.yml` or `docker-compose.yml` accordingly.
