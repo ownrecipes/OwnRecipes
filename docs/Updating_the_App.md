@@ -19,15 +19,9 @@ If anything goes wrong, make sure you got the backup!
 For this, simply (re-)start the app, e. g. by re-running the `quick-start.py`.
 This will create the database backup. Copy it to a safe location, where it won't be overriden.
 
-Now pull the latest from the repos:
+Now pull the latest from the repo:
 ```bash
 cd OwnRecipes
-git pull
-
-cd ownrecipes-api
-git pull
-
-cd ../ownrecipes-web
 git pull
 ```
 
@@ -155,7 +149,7 @@ Then check the release notes about any changes to the following files:
 
 There should only be breaking changes to these files in major releases (IE. 2.0.0, 3.0.0).
 
-Then, [install the python requirements for ownrecipes-api](Running_the_App_Without_Docker_in_dev/#install-the-python-requirements) and [update all the dependencies for ownrecipes-web](Running_the_App_Without_Docker_in_dev/#install-the-dependencies).
+Then, [install the python requirements for ownrecipes-api](Running_the_App_Without_Docker_in_dev.md#install-the-python-requirements) and [update all the dependencies for ownrecipes-web](Running_the_App_Without_Docker_in_dev.md#install-the-dependencies).
 
 Finally, [rebuild ownrecipes-web](#create-production-build-of-ownrecipes-web), deploy and run the app/service as usual.
 

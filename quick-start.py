@@ -1,21 +1,52 @@
 #!/usr/bin/env python
 # encoding: utf-8
 
+import argparse
 from time import sleep
 from os import getcwd, name as os_name
 from subprocess import call, Popen, DEVNULL, PIPE, STDOUT
 
 
-def update_image_tags(version=None):
+app_version='3.4.0'
+
+
+def parse_args():
+    parser = argparse.ArgumentParser(
+        description='OwnRecipes quick setup script. '
+                    'This script will restart your OwnRecipes server and '
+                    'take a database and recipe image backup.'
+    )
+    parser.add_argument(
+        '-t',
+        '--tag',
+        type=str,
+        help='The git tag of OwnRecipes you want to run. '
+             'If not included, then the master branch will be used.'
+    )
+    parser.add_argument(
+        'stop',
+        nargs='?',
+        help='Stops all OwnRecipes containers for the specified tag (or master).'
+    )
+    args = parser.parse_args()
+    args.tag = args.tag if args.tag is not None else app_version
+
+    return args
+
+
+def update_image_tags(version):
     """
-    A simple function to configure the OwnRecipes version.
+    Update the version.yml-file with the required OwnRecipes version(s).
 
     :param version: The version of OwnRecipes the users wants to run.
-                    This is a git Tag.
-    :return: A file called `docker-prod.version.yml`.
-             With the version of each image to pull.
+                    This is a docker tag.
     """
-    version = version if version is not None else 'latest'
+
+    print("")
+    print("Configure app")
+    print("=============")
+    print("Version is " + version + ".")
+
     version = '''version: '3.1'
 services:
   api:
@@ -29,24 +60,34 @@ services:
         f.write(version)
 
 
-def download_images(version=None):
-    """ Download the required images """
-    version = version if version is not None else 'latest'
-    print("==================")
+def download_images(version):
+    """
+    Download the required images.
+
+    :param version: The version of OwnRecipes the users wants to run.
+                    This is a docker tag.
+    """
+    print("")
+    print("")
     print("Downloading Images")
     print("==================")
+    getDockerCompose()
     call(['docker', 'pull', 'ownrecipes/ownrecipes-api:' + version])
     call(['docker', 'pull', 'ownrecipes/ownrecipes-web:' + version])
     call(['docker', 'pull', 'ownrecipes/ownrecipes-nginx:' + version])
 
 
 def getDockerCompose():
-    """ Check if docker-compose V1 or V2 is available """
+    """ Check if docker-compose V1 or V2 is available. """
     try:
-        Popen(['docker-compose', '--version'], stdin=DEVNULL, stdout=DEVNULL, stderr=STDOUT)
-        return 'docker-compose'
-    except OSError:
+        Popen(['docker', 'compose', 'version'], stdin=DEVNULL, stdout=DEVNULL, stderr=STDOUT)
         return 'docker compose'
+    except OSError:
+        try:
+            Popen(['docker-compose', '--version'], stdin=DEVNULL, stdout=DEVNULL, stderr=STDOUT)
+            return 'docker-compose'
+        except OSError:
+            raise RuntimeError("docker-compose not found. Please install the requirements and try again.")
 
 
 def start_containers():
@@ -54,13 +95,12 @@ def start_containers():
     Takes a back up of the Recipe images and DB.
     Restarts OwnRecipes with a new (or the same) version.
     """
-    print("==================")
+    print("")
+    print("")
     print("Starting OwnRecipes")
-    print("==================")
+    print("===================")
 
     dockerCompose = getDockerCompose()
-    if dockerCompose is None:
-        raise RuntimeError("docker-compose not found. Please install the requirements and try again.")
     dockerComposeArr = dockerCompose.split(' ')
 
     # Check if the DB is up and running locally.
@@ -91,7 +131,6 @@ def start_containers():
                 shell=True
             )
     elif 'MYSQL_HOST' in open('.env.docker.production.api').read():
-        # TODO: add process to backup remote DB
         print("Using remote DB...")
     else:
         print("Creating the DB. This may take a minute...")
@@ -117,6 +156,7 @@ def start_containers():
 
     # Stop each container that needs to be updated.
     # Don't stop the DB! There is no reason to.
+    print("Stopping the containers...")
     call([
         *dockerComposeArr,
         '-f', 'docker-prod.yml',
@@ -140,6 +180,7 @@ def start_containers():
     ])
 
     # Start all the containers
+    print("Starting the containers...")
     call([
         *dockerComposeArr,
         '-f', 'docker-prod.yml',
@@ -152,13 +193,12 @@ def start_containers():
 
 
 def stop_containers():
-    print("==================")
+    print("")
+    print("")
     print("Stopping OwnRecipes")
-    print("==================")
+    print("===================")
 
     dockerCompose = getDockerCompose()
-    if dockerCompose is None:
-        raise RuntimeError("docker-compose not found. Please install the requirements and try again.")
     dockerComposeArr = dockerCompose.split(' ')
 
     # Stop each container.
@@ -196,25 +236,7 @@ def stop_containers():
 
 
 if __name__ == '__main__':
-    import argparse
-    parser = argparse.ArgumentParser(
-        description='OwnRecipes quick setup script. '
-                    'This script will restart your OwnRecipes server and '
-                    'take a database and recipe image backup.'
-    )
-    parser.add_argument(
-        '-t',
-        '--tag',
-        type=str,
-        help='The git tag of OwnRecipes you want to run. '
-             'If not included, then the master branch will be used.'
-    )
-    parser.add_argument(
-        'stop',
-        nargs='?',
-        help='Stops all OwnRecipes containers for the specified tag (or master).'
-    )
-    args = parser.parse_args()
+    args = parse_args()
 
     update_image_tags(args.tag)
     if args.stop:

@@ -1,0 +1,8 @@
+{
+  "tag": "3.3.0",
+  "name": "Release 3.3.0",
+  "body": "Menu plans! This release finally includes the menus. This was the last remaining piece of OpenEats that wasn't migrated, yet. Now, OwnRecipes covers all features of OpenEats - and much more.\n\nAlso, this release ships a brand new seasons field, and many styling tweaks to improve the overall user experience.\n\nUpdate from the previous version by following the [update guide](docs/Updating_the_App.md).\n\nFor a full list of changes see [Milestone v3.4.0](https://github.com/ownrecipes/OwnRecipes/milestone/6?closed=1).\n\nWeb:\n- Field for season product ([#2](https://github.com/ownrecipes/OwnRecipes/issues/2))\n- Menu plans ([#93](https://github.com/ownrecipes/OwnRecipes/issues/93))\n- Recipe form: improve parsing of ingredients and directions headings ([#123](https://github.com/ownrecipes/OwnRecipes/issues/123))\n- Tweak styling ([#124](https://github.com/ownrecipes/OwnRecipes/issues/124), [#125](https://github.com/ownrecipes/OwnRecipes/issues/125), [#126](https://github.com/ownrecipes/OwnRecipes/issues/126))\n\nApi:\n- Support for different databases like PostgreSQL ([#96](https://github.com/ownrecipes/OwnRecipes/issues/96))\n- Fix occassionally duplicated search results ([#122](https://github.com/ownrecipes/OwnRecipes/issues/122))\n\nDocker:\n- quick-start should run the projects version by default ([#120](https://github.com/ownrecipes/OwnRecipes/issues/120))\n\nDependencies:\n- Api: Django 4.2.16, gunicorn 23.0.0, Python 3.10, MariaDB 10.11\n- Web: React-Bootstrap 2.10.5, Node 20.11\n\nMinimum required dependencies (non docker setups):\n- MariaDB 10.4\n- Python 3.8\n- Node 18 LTS",
+  "target": "master",
+  "draft": false,
+  "prerelease": false
+}

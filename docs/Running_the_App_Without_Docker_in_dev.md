@@ -199,6 +199,8 @@ Optional: Seed the database with example data.
 ```bash
 /bin/bash -ac '. .env.service.local; exec python3 manage.py loaddata course_data.json'
 /bin/bash -ac '. .env.service.local; exec python3 manage.py loaddata cuisine_data.json'
+/bin/bash -ac '. .env.service.local; exec python3 manage.py loaddata season_data.json'
+/bin/bash -ac '. .env.service.local; exec python3 manage.py loaddata tag_data.json'
 /bin/bash -ac '. .env.service.local; exec python3 manage.py loaddata news_data.json'
 /bin/bash -ac '. .env.service.local; exec python3 manage.py loaddata recipe_data.json'
 /bin/bash -ac '. .env.service.local; exec python3 manage.py loaddata ing_data.json'

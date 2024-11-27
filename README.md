@@ -34,7 +34,6 @@
         <li><a href="#coming-from-openeats">Coming from OpenEats?</a></li>
       </ul>
     </li>
-    <li><a href="#roadmap">Roadmap</a></li>
     <li><a href="#contributing">Contributing</a></li>
     <li><a href="#license">License</a></li>
     <li><a href="#contact">Contact</a></li>
@@ -94,17 +93,6 @@ Read [The Update guide](docs/Updating_the_App.md)
 ## Coming from OpenEats?
 
 Read [The Migration Guide](docs/Migrate_from_OpenEats.md)
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-## Roadmap
-
-- [x] Migrate OpenEats to CRA and TypeScript. Provide basic functions like create, edit and browse.
-- [x] Add support for Raspberry Pi.
-- [ ] Migrate private menu list features from OpenEats.
-- [ ] [Add more awesome stuff](https://github.com/ownrecipes/OwnRecipes/issues).
-
-See the [open issues](https://github.com/ownrecipes/OwnRecipes/issues) for a full list of proposed features (and known issues).
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
