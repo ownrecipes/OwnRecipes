@@ -64,7 +64,7 @@ git push --force
 
 </details>
 <details>
-  <summary>Demo</summary>
+  <summary>Api</summary>
 
 ```bash
 git checkout development
