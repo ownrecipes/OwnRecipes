@@ -7,7 +7,7 @@ from os import getcwd, name as os_name
 from subprocess import call, Popen, DEVNULL, PIPE, STDOUT
 
 
-app_version='3.3.0'
+app_version='3.4.0'
 
 
 def parse_args():
