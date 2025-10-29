@@ -108,7 +108,7 @@ def start_containers():
     # If the user is using a remote DB, do nothing.
     # If no DB is found, Start the docker DB and wait 45s to start.
     p = Popen(
-        ['docker', 'ps', '-q', '-f', 'name=ownrecipes_db_1'],
+        ['docker', 'ps', '-q', '-f', 'name=ownrecipes-db-1'],
         stdin=PIPE,
         stdout=PIPE,
         stderr=PIPE
@@ -118,14 +118,14 @@ def start_containers():
         print("Taking a database backup (saving as ownrecipes.sql)...")
         if os_name == 'nt':
             call(
-                'docker exec ownrecipes_db_1 sh -c ' +
+                'docker exec ownrecipes-db-1 sh -c ' +
                 '"exec mysqldump ownrecipes -u root -p"$MYSQL_ROOT_PASSWORD""' +
                 ' > ownrecipes.sql',
                 shell=True
             )
         else:
             call(
-                'docker exec ownrecipes_db_1 sh -c ' +
+                'docker exec ownrecipes-db-1 sh -c ' +
                 '\'exec mysqldump ownrecipes -u root -p"$MYSQL_ROOT_PASSWORD"\'' +
                 ' > ownrecipes.sql',
                 shell=True
@@ -141,7 +141,7 @@ def start_containers():
     # If it is then take a backup of the Recipe images folder.
     # The backup folder is called `site-media`.
     p = Popen(
-        ['docker', 'ps', '-q', '-f', 'name=ownrecipes_api_1'],
+        ['docker', 'ps', '-q', '-f', 'name=ownrecipes-api-1'],
         stdin=PIPE,
         stdout=PIPE,
         stderr=PIPE
@@ -150,7 +150,7 @@ def start_containers():
     if output and not err:
         print("Taking a image backup save to 'site-media'...")
         call(
-            'docker cp ownrecipes_api_1:/code/site-media/ ' + getcwd(),
+            'docker cp ownrecipes-api-1:/code/site-media/ ' + getcwd(),
             shell=True
         )
 

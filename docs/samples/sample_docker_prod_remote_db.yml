@@ -2,6 +2,7 @@ version: '3.1'
 services:
   api:
     image: ownrecipes/ownrecipes-api
+    container_name: ownrecipes-api-1
     command: /startup/prod-entrypoint.sh
     restart: on-failure
     volumes:
@@ -17,11 +18,13 @@ services:
       - .env.docker.production.web
   nginx:
     image: ownrecipes/ownrecipes-nginx
+    container_name: ownrecipes-nginx-1
     command: ./start.sh
     volumes:
       - static-files:/var/www/html/ownrecipes-static/static-files
       - site-media:/var/www/html/ownrecipes-static/site-media
       - public-ui:/var/www/html/ownrecipes-static/public-ui
+      # - /opt/ownrecipes/ssl:/ssl/:ro
     depends_on:
       - api
       - web

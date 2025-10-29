@@ -21,7 +21,7 @@ The following commands can be used to take backups of your data and restore thos
 Replace `/dir/on/local/system/` with the location where you would like your images.
 
 ```sh
-sudo docker cp ownrecipes_api_1:/code/site-media/ /dir/on/local/system/
+sudo docker cp ownrecipes-api-1:/code/site-media/ /dir/on/local/system/
 ```
 
 #### Restoring:
@@ -29,7 +29,7 @@ sudo docker cp ownrecipes_api_1:/code/site-media/ /dir/on/local/system/
 Replace `/dir/on/local/system/` with the location where you would like your images.
 
 ```sh
-sudo docker cp /dir/on/local/system/site-media/. ownrecipes_api_1:/code/site-media/
+sudo docker cp /dir/on/local/system/site-media/. ownrecipes-api-1:/code/site-media/
 ```
 
 ### Database
@@ -39,7 +39,7 @@ sudo docker cp /dir/on/local/system/site-media/. ownrecipes_api_1:/code/site-med
 Places a sql dump of the database on your current working directory.
 
 ```sh
-sudo docker exec ownrecipes_db_1 sh -c 'exec mysqldump ownrecipes -u root -p"$MYSQL_ROOT_PASSWORD"' > ownrecipes.sql
+sudo docker exec ownrecipes-db-1 sh -c 'exec mysqldump ownrecipes -u root -p"$MYSQL_ROOT_PASSWORD"' > ownrecipes.sql
 ```
 
 #### Restoring:
@@ -50,7 +50,7 @@ Note: if you changed the database name then you will need to change the last wor
 ```sh
 cd OwnRecipes
 source .env.docker.production.api
-cat ownrecipes.sql | sudo docker exec -i ownrecipes_db_1 /usr/bin/mysql -u root -p"$MYSQL_ROOT_PASSWORD" ownrecipes
+cat ownrecipes.sql | sudo docker exec -i ownrecipes-db-1 /usr/bin/mysql -u root -p"$MYSQL_ROOT_PASSWORD" ownrecipes
 ```
 
 ### Sources

@@ -7,7 +7,7 @@
   <ol>
     <li><a href="#docker-compose-throws-an-error">docker-compose throws an error</a></li>
     <li><a href="#can-not-create-a-superuser">Can not create a superuser</a></li>
-    <li><a href="#the-docker-container-ownrecipes_web_1-exits">The docker container ownrecipes_web_1 exits</a></li>
+    <li><a href="#the-docker-container-ownrecipes-web-1-exits">The docker container ownrecipes-web-1 exits</a></li>
     <li><a href="#browser-can-not-reach-the-web-app">Browser can not reach the web-app</a></li>
     <li><a href="#browser-can-not-connect-to-the-api">Browser can not connect to the api</a></li>
   </ol>
@@ -44,9 +44,9 @@ You may also want to check the terminal output for any errors during start. If y
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-## The docker container ownrecipes_web_1 exits
+## The docker container ownrecipes-web-1 exits
 
-In production, the container `ownrecipes_web_1` will exit. This is intended behaviour. The container will initialize the web-app and provide the build as volume, that is mounted into the nginx.
+In production, the container `ownrecipes-web-1` will exit. This is intended behaviour. The container will initialize the web-app and provide the build as volume, that is mounted into the nginx.
 After the initialization, the container is not needed any longer and therefore will exit.
 
 The required containers for OwnRecipes to operate are db, api and nginx. With your browser of choice, you should be able to connect to the web-app via the nginx, that you can reach via the configured url (see `.env.docker.production.api`, var `NODE_URL`).

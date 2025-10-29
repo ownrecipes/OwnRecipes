@@ -36,8 +36,7 @@ Once you know your env and docker-compose files are up to date, run the [`quick-
 
 Last but not least, if the database (MariaDB) was upgraded, you need to migrate the database:
 ```bash
-# If running a specific tag, substitute ownrecipes_db_1 accordingly.
-sudo docker exec ownrecipes_db_1 sh -c 'exec mysql_upgrade -u root -p"$MYSQL_ROOT_PASSWORD"'
+sudo docker exec ownrecipes-db-1 sh -c 'exec mysql_upgrade -u root -p"$MYSQL_ROOT_PASSWORD"'
 ```
 
 and then run [`quick-start.py`](Running_the_App.md#start-docker-containers) once again to make sure all bits and pieces are tied error-free.
@@ -53,7 +52,7 @@ If anything goes wrong, make sure you got the backup!
 
 For this, run the app as usual. Then enter in a second terminal to create the database backup:
 ```bash
-sudo docker exec ownrecipes_db_1 sh -c \'exec mysqldump ownrecipes -u root -p"$MYSQL_ROOT_PASSWORD"\' > ownrecipes.sql'
+sudo docker exec ownrecipes-db-1 sh -c \'exec mysqldump ownrecipes -u root -p"$MYSQL_ROOT_PASSWORD"\' > ownrecipes.sql'
 ```
 
 When updating your local version that is deployed via docker,
@@ -100,7 +99,7 @@ sudo docker compose --profile all up
 
 Last but not least, if the database (MariaDB) was upgraded, you need to migrate the database:
 ```bash
-sudo docker exec ownrecipes_db_1 sh -c 'exec mysql_upgrade -u root -p"$MYSQL_ROOT_PASSWORD"'
+sudo docker exec ownrecipes-db-1 sh -c 'exec mysql_upgrade -u root -p"$MYSQL_ROOT_PASSWORD"'
 # Restart the app to reconnect the api to the updated database.
 sudo docker compose --profile all stop
 sudo docker compose --profile all up

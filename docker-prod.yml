@@ -2,6 +2,7 @@ version: '3.1'
 services:
   db:
     image: mariadb:10.11
+    container_name: ownrecipes-db-1
     volumes:
       - database:/var/lib/mysql
     healthcheck:
@@ -12,6 +13,7 @@ services:
       - .env.docker.production.api
   api:
     image: ownrecipes/ownrecipes-api
+    container_name: ownrecipes-api-1
     command: /startup/prod-entrypoint.sh
     restart: on-failure
     volumes:
@@ -34,6 +36,7 @@ services:
       - .env.docker.production.web
   nginx:
     image: ownrecipes/ownrecipes-nginx
+    container_name: ownrecipes-nginx-1
     command: ./start.sh
     volumes:
       - static-files:/var/www/html/ownrecipes-static/static-files
