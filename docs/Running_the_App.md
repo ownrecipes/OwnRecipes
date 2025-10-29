@@ -82,7 +82,7 @@ E.g. Given that the IP address for the OwnRecipes server is `192.168.0.12` and p
 Once the files have been created, run the command below to run OwnRecipes with the current version.
 
 ```bash
-sudo ./quick-start.py
+sudo python3 quick-start.py
 ```
 
 <details>
@@ -96,12 +96,12 @@ sudo ./quick-start.py
 
 You can also specify a different version to run, though you will have to make sure that the configuration files are compatible.
 ```bash
-sudo ./quick-start.py -t 1.0.3
+sudo python3 quick-start.py -t 1.0.3
 ```
 
 Use the following command for further help:
 ```bash
-sudo ./quick-start.py --help
+sudo python3 quick-start.py --help
 ```
 
 </details>

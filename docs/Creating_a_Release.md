@@ -155,13 +155,13 @@ git clone https://github.com/ownrecipes/ownrecipes-nginx --branch <tag>
 cd ownrecipes-nginx
 
 # Build the image, tag it
-docker build . -t ownrecipes/ownrecipes-nginx:<tag>
-docker build . -t ownrecipes/ownrecipes-nginx:latest
+sudo docker build . -t ownrecipes/ownrecipes-nginx:<tag>
+sudo docker build . -t ownrecipes/ownrecipes-nginx:latest
 
 # Upload it to docker-hub
-docker login
-docker push ownrecipes/ownrecipes-nginx:<tag>
-docker push ownrecipes/ownrecipes-nginx:latest
+sudo docker login
+sudo docker push ownrecipes/ownrecipes-nginx:<tag>
+sudo docker push ownrecipes/ownrecipes-nginx:latest
 ```
 
 ### ownrecipes-api
@@ -174,13 +174,13 @@ git clone https://github.com/ownrecipes/ownrecipes-api --branch <tag>
 cd ownrecipes-api
 
 # Build the image, tag it
-docker build . -t ownrecipes/ownrecipes-api:<tag>
-docker build . -t ownrecipes/ownrecipes-api:latest
+sudo docker build . -t ownrecipes/ownrecipes-api:<tag>
+sudo docker build . -t ownrecipes/ownrecipes-api:latest
 
 # Upload it to docker-hub
-docker login
-docker push ownrecipes/ownrecipes-api:<tag>
-docker push ownrecipes/ownrecipes-api:latest
+sudo docker login
+sudo docker push ownrecipes/ownrecipes-api:<tag>
+sudo docker push ownrecipes/ownrecipes-api:latest
 ```
 
 ### ownrecipes-web
@@ -197,11 +197,11 @@ npm install
 npm run build
 
 # Build the image, tag it
-docker build . -f Dockerfile-release -t ownrecipes/ownrecipes-web:<tag>
-docker build . -f Dockerfile-release -t ownrecipes/ownrecipes-web:latest
+sudo docker build . -f Dockerfile-release -t ownrecipes/ownrecipes-web:<tag>
+sudo docker build . -f Dockerfile-release -t ownrecipes/ownrecipes-web:latest
 
 # Upload it to docker-hub
-docker login
-docker push ownrecipes/ownrecipes-web:<tag>
-docker push ownrecipes/ownrecipes-web:latest
+sudo docker login
+sudo docker push ownrecipes/ownrecipes-web:<tag>
+sudo docker push ownrecipes/ownrecipes-web:latest
 ```

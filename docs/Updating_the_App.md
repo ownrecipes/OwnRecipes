@@ -16,7 +16,7 @@
 First, make a backup. Do not skip this step!
 If anything goes wrong, make sure you got the backup!
 
-For this, simply (re-)start the app, e. g. by re-running the `quick-start.py`.
+For this, simply (re-)start the app, e. g. by re-running the [`quick-start.py`](Running_the_App.md#start-docker-containers) script.
 This will create the database backup. Copy it to a safe location, where it won't be overriden.
 
 Now pull the latest from the repo:
@@ -53,7 +53,7 @@ If anything goes wrong, make sure you got the backup!
 
 For this, run the app as usual. Then enter in a second terminal to create the database backup:
 ```bash
-docker exec ownrecipes_db_1 sh -c \'exec mysqldump ownrecipes -u root -p"$MYSQL_ROOT_PASSWORD"\' > ownrecipes.sql'
+sudo docker exec ownrecipes_db_1 sh -c \'exec mysqldump ownrecipes -u root -p"$MYSQL_ROOT_PASSWORD"\' > ownrecipes.sql'
 ```
 
 When updating your local version that is deployed via docker,

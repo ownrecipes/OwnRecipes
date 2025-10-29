@@ -28,6 +28,6 @@ Restart your docker containers.
 
   - `sudo docker compose -f docker-prod.yml -f docker-prod.override.yml -f docker-prod.version.yml restart`
   - OR
-  - Just run the `quick-start` script again: `./quick-start`
+  - Just run the [`quick-start.py`](Running_the_App.md#start-docker-containers) script again
 
 Open your OwnRecipes instance via https to confirm it worked.
