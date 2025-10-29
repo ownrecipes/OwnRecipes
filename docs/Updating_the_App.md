@@ -91,18 +91,23 @@ Then check the release notes or GitHub issues about any changes to the following
 
 There should only be breaking changes to these files in major releases (IE. 2.0.0, 3.0.0).
 
-Once you know your env and docker-compose files are up to date, [run the app as you usual](Running_the_App_in_dev.md#setup-ownrecipes):
+Once you know your env and docker-compose files are up to date, [run the app as usual](Running_the_App_in_dev.md#setup-ownrecipes):
 ```bash
 sudo docker compose --profile all build
 sudo docker compose --profile all up
 ```
 
-Last but not least, if the database (MariaDB) was upgraded, you need to migrate the database:
+Then, if the database (MariaDB) was upgraded, you need to migrate the database:
 ```bash
 sudo docker exec ownrecipes-db-1 sh -c 'exec mysql_upgrade -u root -p"$MYSQL_ROOT_PASSWORD"'
 # Restart the app to reconnect the api to the updated database.
 sudo docker compose --profile all stop
 sudo docker compose --profile all up
+```
+
+Finally, run the django migrations:
+```bash
+sudo docker compose run --rm --entrypoint 'python manage.py migrate' api
 ```
 
 Enjoy!
@@ -112,7 +117,7 @@ Enjoy!
 ## Updating the app without docker
 
 You managed to run the App without docker, what is pretty cool.
-Updating is a bit more involved, as running the App without docker is anyway.
+Updating is a bit more involving, as running the App without docker is anyway.
 
 First, make a backup. Do not skip this step!
 If anything goes wrong, make sure you got the backup!
@@ -150,7 +155,14 @@ There should only be breaking changes to these files in major releases (IE. 2.0.
 
 Then, [install the python requirements for ownrecipes-api](Running_the_App_Without_Docker_in_dev.md#install-the-python-requirements) and [update all the dependencies for ownrecipes-web](Running_the_App_Without_Docker_in_dev.md#install-the-dependencies).
 
-Finally, [rebuild ownrecipes-web](#create-production-build-of-ownrecipes-web), deploy and run the app/service as usual.
+Now, [rebuild ownrecipes-web](#create-production-build-of-ownrecipes-web), deploy and run the app/service as usual.
+
+Finally, run the django migrations:
+
+```bash
+cd ownrecipes-api
+/bin/bash -ac '. .env.service.local; exec python3 manage.py migrate'
+```
 
 Enjoy!
 

@@ -42,6 +42,7 @@ All container, db, api and web, should start successfully. Check the terminal ou
 
 To create a super user:
 ```bash
+sudo docker compose run --rm --entrypoint 'python manage.py migrate' api
 sudo docker compose run --rm --entrypoint 'python manage.py createsuperuser' api
 ```
 Follow the prompts given to create your user. You can do this as many times as you like.
