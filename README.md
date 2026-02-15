@@ -4,6 +4,20 @@
 *** (https://raw.githubusercontent.com/othneildrew/Best-README-Template).
 -->
 
+## 🚛📦 OWNRECIPES MOVED! 🚛📦
+
+🏳️‍🌈 OwnRecipes is part of a free world and will always be! Sadly, GitHub is owned by the mega tech corp Microsoft that is (at least financially) supporting the fascist #UnplugTrump regime. This is not compatible with our values, and thus we moved to [Codeberg](https://codeberg.org/), a democratic community-driven, non-profit software development platform.
+
+You can find OwnRecipes now here:
+https://codeberg.org/ownrecipes/OwnRecipes
+
+The repos on GitHub will no longer receive any updates and will eventually be deleted after some time.
+
+The docker organization and therefore the production docker setups are unaffected by this. You can run and upgrade OwnRecipes in production as usual.
+
+<hr />
+
+
 <div align="center">
   <h3 align="center">OwnRecipes</h3>
 
